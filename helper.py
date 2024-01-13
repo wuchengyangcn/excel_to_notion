@@ -63,5 +63,22 @@ def bulleted_list_item(text, annotations={}):
     }
   }
 
-# TODO
-# database
+def database_properties(title, columns):
+  properties = {columns[0]: {
+    'title': {}
+  }}
+  for column in columns[1:]:
+    properties[column] = {
+      'rich_text': {}
+    }
+  return [{'type': 'text', 'text': {'content': title}}], properties
+
+def line(keys, values):
+  properties = {keys[0]: {
+    'title': [{'text': {'content': values[0]}}]
+  }}
+  for index in range(1, len(keys)):
+    properties[keys[index]] = {
+      'rich_text': [{'text': {'content': values[index]}}]
+    }
+  return properties
